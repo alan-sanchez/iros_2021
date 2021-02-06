@@ -4,7 +4,7 @@ int REF_3V3 = A1; //3.3V power on the Arduino board
  
 void setup()
 {
-  Serial.begin(4800);
+  Serial.begin(9600);
  
   pinMode(UVOUT, INPUT);
   pinMode(REF_3V3, INPUT);
@@ -32,7 +32,7 @@ void loop()
 // 
 //  Serial.print(" / ML8511 voltage: ");
 //  Serial.print(outputVoltage);
-    Serial.print(millis());
+//    Serial.print(millis());
 // 
 //  Serial.print(" / UV Intensity (mW/cm^2): ");
   Serial.println(uvIntensity);
@@ -41,7 +41,7 @@ void loop()
 //
 //  Serial.println(refLevel);
   
-//  delay(200);
+  delay(200);
 }
  
 //Takes an average of readings on a given pin

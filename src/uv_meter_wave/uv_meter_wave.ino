@@ -4,45 +4,36 @@ int UVOUT = A0; //Output from the sensor
 void setup()
 {
   Serial.begin(9600);
-
   pinMode(UVOUT, INPUT);
-  pinMode(REF_3V3, INPUT);
-
-  //  Serial.println("ML8511 example");
 
 }
 
 void loop()
 {
-  int uvLevel = averageAnalogRead(UVOUT);
-  int refLevel = averageAnalogRead(REF_3V3);
+//  float Vo = 5.0*analogRead(UVOUT)/1023.0;
+//  float Vo_d = analogRead(UVOUT);
+//  float Vo_map = map(Vo_d, 0, 755, 0, 1023);
+//  float Di = (5.0*Vo_map/1023.0)/4.3;
+    
+  float V = 5.0*analogRead(UVOUT)/1023.0;
 
-
-
-  //  float uvIntensity = mapfloat(outputVoltage, 0.99, 2.8, 0.0, 15.0); //Convert the voltage to a UV intensity level
-
-//  Serial.print(millis());
+//  float uvIntensity = mapfloat(Di, 0.0, 1.0, 0.0, 9.0); //Convert the voltage to a UV intensity level
+  //  Serial.print(millis());
 
   //  Serial.print(" / UV Intensity (mW/cm^2): ");
-  Serial.println(uvIntensity);
+//  Serial.print(Vo_d);
+//  Serial.print(", ");
+//  Serial.print(Vo_map);
+//  Serial.print(", ");
+//  Serial.print(Di);
+//  Serial.print(", ");
+//  Serial.println(uvIntensity);
+    Serial.println(V);
 
-
-  //  delay(200);
+  delay(200);
 }
 
-//Takes an average of readings on a given pin
-//Returns the average
-int averageAnalogRead(int pinToRead)
-{
-  byte numberOfReadings = 8;
-  unsigned int runningValue = 0;
 
-  for (int x = 0 ; x < numberOfReadings ; x++)
-    runningValue += analogRead(pinToRead);
-  runningValue /= numberOfReadings;
-
-  return (runningValue);
-}
 
 float mapfloat(float x, float in_min, float in_max, float out_min, float out_max)
 {
