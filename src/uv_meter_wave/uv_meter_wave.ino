@@ -15,9 +15,9 @@ void loop()
 //  float Vo_map = map(Vo_d, 0, 755, 0, 1023);
 //  float Di = (5.0*Vo_map/1023.0)/4.3;
     
-  float V = 5.0*analogRead(UVOUT)/1023.0;
+  float Di = 5.0*analogRead(UVOUT)/1023.0/1.22;
 
-//  float uvIntensity = mapfloat(Di, 0.0, 1.0, 0.0, 9.0); //Convert the voltage to a UV intensity level
+  float uvIntensity = mapfloat(Di, 0.0, 1.0, 0.0, 9.0); //Convert the voltage to a UV intensity level
   //  Serial.print(millis());
 
   //  Serial.print(" / UV Intensity (mW/cm^2): ");
@@ -27,8 +27,9 @@ void loop()
 //  Serial.print(", ");
 //  Serial.print(Di);
 //  Serial.print(", ");
-//  Serial.println(uvIntensity);
-    Serial.println(V);
+  Serial.print(uvIntensity);
+  Serial.print(", ");
+  Serial.println(Di);
 
   delay(200);
 }
