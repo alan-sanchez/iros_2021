@@ -4,12 +4,12 @@ int REF_3V3 = A1; //3.3V power on the Arduino board
  
 void setup()
 {
-  Serial.begin(9600);
+  Serial.begin(4800);
  
   pinMode(UVOUT, INPUT);
   pinMode(REF_3V3, INPUT);
  
-  Serial.println("ML8511 example");
+//  Serial.println("ML8511 example");
   
 }
  
@@ -24,23 +24,24 @@ void loop()
   
   float uvIntensity = mapfloat(outputVoltage, 0.99, 2.8, 0.0, 15.0); //Convert the voltage to a UV intensity level
  
-  Serial.print("output: ");
-  Serial.print(refLevel);
- 
-  Serial.print("ML8511 output: ");
-  Serial.print(uvLevel);
- 
-  Serial.print(" / ML8511 voltage: ");
-  Serial.print(outputVoltage);
- 
-  Serial.print(" / UV Intensity (mW/cm^2): ");
-  Serial.print(uvIntensity);
+//  Serial.print("output: ");
+//  Serial.print(refLevel);
+// 
+//  Serial.print("ML8511 output: ");
+//  Serial.print(uvLevel);
+// 
+//  Serial.print(" / ML8511 voltage: ");
+//  Serial.print(outputVoltage);
+    Serial.print(millis());
+// 
+//  Serial.print(" / UV Intensity (mW/cm^2): ");
+  Serial.println(uvIntensity);
   
-  Serial.println();
-
-  Serial.println(refLevel);
+//  Serial.println();
+//
+//  Serial.println(refLevel);
   
-  delay(200);
+//  delay(200);
 }
  
 //Takes an average of readings on a given pin
