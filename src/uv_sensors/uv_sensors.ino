@@ -11,7 +11,7 @@ float V_conversion = 1.15;
 
 void setup(){
   // Set baud rate
-  Serial.begin(9600);
+  Serial.begin(19200);
 }
 
 void loop(){
@@ -37,16 +37,16 @@ void loop(){
   float Di_15 = diode_current(analogRead(A15));
 
   // Compute Irradiance at sensor with mapfloat function //Convert the voltage to a UV intensity level
-  float Ir_0  = mapfloat(Di_0, 0.0, 1.0, 0.0, 9.0); 
-  float Ir_1  = mapfloat(Di_1, 0.0, 1.0, 0.0, 9.0); 
-  float Ir_2  = mapfloat(Di_2, 0.0, 1.0, 0.0, 9.0); 
-  float Ir_3  = mapfloat(Di_3, 0.0, 1.0, 0.0, 9.0); 
-  float Ir_4  = mapfloat(Di_4, 0.0, 1.0, 0.0, 9.0); 
-  float Ir_5  = mapfloat(Di_5, 0.0, 1.0, 0.0, 9.0); 
-  float Ir_6  = mapfloat(Di_6, 0.0, 1.0, 0.0, 9.0); 
-  float Ir_7  = mapfloat(Di_7, 0.0, 1.0, 0.0, 9.0);
-  float Ir_8  = mapfloat(Di_8, 0.0, 1.0, 0.0, 9.0); 
-  float Ir_9  = mapfloat(Di_9, 0.0, 1.0, 0.0, 9.0); 
+  float Ir_0  = mapfloat(Di_0,  0.0, 1.0, 0.0, 9.0); 
+  float Ir_1  = mapfloat(Di_1,  0.0, 1.0, 0.0, 9.0); 
+  float Ir_2  = mapfloat(Di_2,  0.0, 1.0, 0.0, 9.0); 
+  float Ir_3  = mapfloat(Di_3,  0.0, 1.0, 0.0, 9.0); 
+  float Ir_4  = mapfloat(Di_4,  0.0, 1.0, 0.0, 9.0); 
+  float Ir_5  = mapfloat(Di_5,  0.0, 1.0, 0.0, 9.0); 
+  float Ir_6  = mapfloat(Di_6,  0.0, 1.0, 0.0, 9.0); 
+  float Ir_7  = mapfloat(Di_7,  0.0, 1.0, 0.0, 9.0);
+  float Ir_8  = mapfloat(Di_8,  0.0, 1.0, 0.0, 9.0); 
+  float Ir_9  = mapfloat(Di_9,  0.0, 1.0, 0.0, 9.0); 
   float Ir_10 = mapfloat(Di_10, 0.0, 1.0, 0.0, 9.0); 
   float Ir_11 = mapfloat(Di_11, 0.0, 1.0, 0.0, 9.0);
   float Ir_12 = mapfloat(Di_12, 0.0, 1.0, 0.0, 9.0); 
@@ -55,16 +55,16 @@ void loop(){
   float Ir_15 = mapfloat(Di_15, 0.0, 1.0, 0.0, 9.0);
   
   // Update UV dosage at sensor
-  UV_Dose_0  += Ir_0 * delta_t/1000.0;
-  UV_Dose_1  += Ir_1 * delta_t/1000.0;
-  UV_Dose_2  += Ir_2 * delta_t/1000.0;
-  UV_Dose_3  += Ir_3 * delta_t/1000.0;
-  UV_Dose_4  += Ir_4 * delta_t/1000.0;
-  UV_Dose_5  += Ir_5 * delta_t/1000.0;
-  UV_Dose_6  += Ir_6 * delta_t/1000.0;
-  UV_Dose_7  += Ir_7 * delta_t/1000.0;
-  UV_Dose_8  += Ir_8 * delta_t/1000.0;
-  UV_Dose_9  += Ir_9 * delta_t/1000.0;
+  UV_Dose_0  += Ir_0  * delta_t/1000.0;
+  UV_Dose_1  += Ir_1  * delta_t/1000.0;
+  UV_Dose_2  += Ir_2  * delta_t/1000.0;
+  UV_Dose_3  += Ir_3  * delta_t/1000.0;
+  UV_Dose_4  += Ir_4  * delta_t/1000.0;
+  UV_Dose_5  += Ir_5  * delta_t/1000.0;
+  UV_Dose_6  += Ir_6  * delta_t/1000.0;
+  UV_Dose_7  += Ir_7  * delta_t/1000.0;
+  UV_Dose_8  += Ir_8  * delta_t/1000.0;
+  UV_Dose_9  += Ir_9  * delta_t/1000.0;
   UV_Dose_10 += Ir_10 * delta_t/1000.0;
   UV_Dose_11 += Ir_11 * delta_t/1000.0;
   UV_Dose_12 += Ir_12 * delta_t/1000.0;
@@ -73,15 +73,45 @@ void loop(){
   UV_Dose_15 += Ir_15 * delta_t/1000.0;
   
   // Serial print the irradiance and uv dosage at sensor
-  Serial.print(Ir_0);
+//  Serial.print(Ir_0);
+  Serial.print(UV_Dose_0);
+  Serial.print(", ");  
+  Serial.print(UV_Dose_1);
   Serial.print(", ");
-  Serial.println(UV_Dose_0);
+  Serial.print(UV_Dose_2);
+  Serial.print(", ");
+  Serial.print(UV_Dose_3);
+  Serial.print(", ");
+  Serial.print(UV_Dose_4);
+  Serial.print(", ");
+  Serial.print(UV_Dose_5);
+  Serial.print(", ");
+  Serial.print(UV_Dose_6);
+  Serial.print(", ");
+  Serial.print(UV_Dose_7);
+  Serial.print(", ");
+  Serial.print(UV_Dose_8);
+  Serial.print(", ");
+  Serial.print(UV_Dose_9);
+  Serial.print(", ");
+  Serial.print(UV_Dose_10);
+  Serial.print(", ");
+  Serial.print(UV_Dose_11);
+  Serial.print(", ");
+  Serial.print(UV_Dose_12);
+  Serial.print(", ");
+  Serial.print(UV_Dose_13);
+  Serial.print(", ");
+  Serial.print(UV_Dose_14);
+  Serial.print(", ");
+  Serial.println(UV_Dose_15);
 
+  
   // update the last measured time before the time delay
   last_time = millis();
 
   // Add delay
-  delay(500);
+  delay(1000);
 }
 
 
