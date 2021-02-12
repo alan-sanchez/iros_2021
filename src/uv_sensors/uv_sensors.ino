@@ -2,9 +2,10 @@
 // Delcare all constants and variables
 volatile unsigned long last_time = 0;
 volatile unsigned long delta_t;
-volatile float UV_Dose_0,  UV_Dose_1,  UV_Dose_2,  UV_Dose_3,  UV_Dose_4,
-               UV_Dose_5,  UV_Dose_6,  UV_Dose_7,  UV_Dose_8,  UV_Dose_9,
-               UV_Dose_10, UV_Dose_11, UV_Dose_12, UV_Dose_13, UV_Dose_14;
+volatile float UV_Dose_0,  UV_Dose_1,  UV_Dose_2,  UV_Dose_3,  
+               UV_Dose_4,  UV_Dose_5,  UV_Dose_6,  UV_Dose_7,  
+               UV_Dose_8,  UV_Dose_9,  UV_Dose_10, UV_Dose_11, 
+               UV_Dose_12, UV_Dose_13, UV_Dose_14; UV_Dose_15
                
 float V_conversion = 1.15;
 
@@ -18,8 +19,22 @@ void loop(){
   delta_t = millis() - last_time;
 
   // Compute the diode current of the sensors with diode_current function
-  float Di_0 = diode_current(analogRead(A0));
-  
+  float Di_0  = diode_current(analogRead(A0));
+  float Di_1  = diode_current(analogRead(A1));
+  float Di_2  = diode_current(analogRead(A2));
+  float Di_3  = diode_current(analogRead(A3));
+  float Di_4  = diode_current(analogRead(A4));
+  float Di_5  = diode_current(analogRead(A5));
+  float Di_6  = diode_current(analogRead(A6));
+  float Di_7  = diode_current(analogRead(A7));
+  float Di_8  = diode_current(analogRead(A8));
+  float Di_9  = diode_current(analogRead(A9));
+  float Di_10 = diode_current(analogRead(A10));
+  float Di_11 = diode_current(analogRead(A11));
+  float Di_12 = diode_current(analogRead(A12));
+  float Di_13 = diode_current(analogRead(A13));
+  float Di_14 = diode_current(analogRead(A14));
+  float Di_15 = diode_current(analogRead(A15));
 
   // Compute Irradaince at sensor with mapfloat function
   float Ir_0 = mapfloat(Di_0, 0.0, 1.0, 0.0, 9.0); //Convert the voltage to a UV intensity level
