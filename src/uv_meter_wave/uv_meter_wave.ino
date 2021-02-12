@@ -3,7 +3,7 @@
 volatile unsigned long last_time = 0;
 volatile unsigned long delta_t;
 volatile float UV_Dose_0, UV_Dose_1, UV_Dose_2;
-float V_conversion = 1.22;
+float V_conversion = 1.15;
 
 void setup(){
   // Set baud rate
@@ -32,7 +32,7 @@ void loop(){
   last_time = millis();
 
   // Add delay
-  delay(1000);
+  delay(500);
 }
 
 
