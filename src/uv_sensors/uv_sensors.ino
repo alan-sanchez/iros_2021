@@ -5,7 +5,7 @@ volatile unsigned long delta_t;
 volatile float UV_Dose_0,  UV_Dose_1,  UV_Dose_2,  UV_Dose_3,  
                UV_Dose_4,  UV_Dose_5,  UV_Dose_6,  UV_Dose_7,  
                UV_Dose_8,  UV_Dose_9,  UV_Dose_10, UV_Dose_11, 
-               UV_Dose_12, UV_Dose_13, UV_Dose_14; UV_Dose_15
+               UV_Dose_12, UV_Dose_13, UV_Dose_14, UV_Dose_15;
                
 float V_conversion = 1.15;
 
@@ -36,7 +36,7 @@ void loop(){
   float Di_14 = diode_current(analogRead(A14));
   float Di_15 = diode_current(analogRead(A15));
 
-  // Compute Irradaince at sensor with mapfloat function //Convert the voltage to a UV intensity level
+  // Compute Irradiance at sensor with mapfloat function //Convert the voltage to a UV intensity level
   float Ir_0  = mapfloat(Di_0, 0.0, 1.0, 0.0, 9.0); 
   float Ir_1  = mapfloat(Di_1, 0.0, 1.0, 0.0, 9.0); 
   float Ir_2  = mapfloat(Di_2, 0.0, 1.0, 0.0, 9.0); 
@@ -55,8 +55,23 @@ void loop(){
   float Ir_15 = mapfloat(Di_15, 0.0, 1.0, 0.0, 9.0);
   
   // Update UV dosage at sensor
-  UV_Dose_0 += Ir_0 * delta_t/1000.0;
-
+  UV_Dose_0  += Ir_0 * delta_t/1000.0;
+  UV_Dose_1  += Ir_1 * delta_t/1000.0;
+  UV_Dose_2  += Ir_2 * delta_t/1000.0;
+  UV_Dose_3  += Ir_3 * delta_t/1000.0;
+  UV_Dose_4  += Ir_4 * delta_t/1000.0;
+  UV_Dose_5  += Ir_5 * delta_t/1000.0;
+  UV_Dose_6  += Ir_6 * delta_t/1000.0;
+  UV_Dose_7  += Ir_7 * delta_t/1000.0;
+  UV_Dose_8  += Ir_8 * delta_t/1000.0;
+  UV_Dose_9  += Ir_9 * delta_t/1000.0;
+  UV_Dose_10 += Ir_10 * delta_t/1000.0;
+  UV_Dose_11 += Ir_11 * delta_t/1000.0;
+  UV_Dose_12 += Ir_12 * delta_t/1000.0;
+  UV_Dose_13 += Ir_13 * delta_t/1000.0;
+  UV_Dose_14 += Ir_14 * delta_t/1000.0;
+  UV_Dose_15 += Ir_15 * delta_t/1000.0;
+  
   // Serial print the irradiance and uv dosage at sensor
   Serial.print(Ir_0);
   Serial.print(", ");
