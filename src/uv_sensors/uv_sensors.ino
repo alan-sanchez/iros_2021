@@ -2,8 +2,10 @@
 // Delcare all constants and variables
 volatile unsigned long last_time = 0;
 volatile unsigned long delta_t;
-volatile float UV_Dose_0, UV_Dose_1, UV_Dose_2, 
-               UV_Dose_3;
+volatile float UV_Dose_0,  UV_Dose_1,  UV_Dose_2,  UV_Dose_3,  UV_Dose_4,
+               UV_Dose_5,  UV_Dose_6,  UV_Dose_7,  UV_Dose_8,  UV_Dose_9,
+               UV_Dose_10, UV_Dose_11, UV_Dose_12, UV_Dose_13, UV_Dose_14;
+               
 float V_conversion = 1.15;
 
 void setup(){
