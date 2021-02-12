@@ -36,9 +36,24 @@ void loop(){
   float Di_14 = diode_current(analogRead(A14));
   float Di_15 = diode_current(analogRead(A15));
 
-  // Compute Irradaince at sensor with mapfloat function
-  float Ir_0 = mapfloat(Di_0, 0.0, 1.0, 0.0, 9.0); //Convert the voltage to a UV intensity level
-
+  // Compute Irradaince at sensor with mapfloat function //Convert the voltage to a UV intensity level
+  float Ir_0  = mapfloat(Di_0, 0.0, 1.0, 0.0, 9.0); 
+  float Ir_1  = mapfloat(Di_1, 0.0, 1.0, 0.0, 9.0); 
+  float Ir_2  = mapfloat(Di_2, 0.0, 1.0, 0.0, 9.0); 
+  float Ir_3  = mapfloat(Di_3, 0.0, 1.0, 0.0, 9.0); 
+  float Ir_4  = mapfloat(Di_4, 0.0, 1.0, 0.0, 9.0); 
+  float Ir_5  = mapfloat(Di_5, 0.0, 1.0, 0.0, 9.0); 
+  float Ir_6  = mapfloat(Di_6, 0.0, 1.0, 0.0, 9.0); 
+  float Ir_7  = mapfloat(Di_7, 0.0, 1.0, 0.0, 9.0);
+  float Ir_8  = mapfloat(Di_8, 0.0, 1.0, 0.0, 9.0); 
+  float Ir_9  = mapfloat(Di_9, 0.0, 1.0, 0.0, 9.0); 
+  float Ir_10 = mapfloat(Di_10, 0.0, 1.0, 0.0, 9.0); 
+  float Ir_11 = mapfloat(Di_11, 0.0, 1.0, 0.0, 9.0);
+  float Ir_12 = mapfloat(Di_12, 0.0, 1.0, 0.0, 9.0); 
+  float Ir_13 = mapfloat(Di_13, 0.0, 1.0, 0.0, 9.0); 
+  float Ir_14 = mapfloat(Di_14, 0.0, 1.0, 0.0, 9.0); 
+  float Ir_15 = mapfloat(Di_15, 0.0, 1.0, 0.0, 9.0);
+  
   // Update UV dosage at sensor
   UV_Dose_0 += Ir_0 * delta_t/1000.0;
 
