@@ -1,59 +1,37 @@
 #!/usr/bin/env python
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.optimize import curve_fit
 
-ir = [# 0.05, .1, .2, .35, .45, .57, 0.8, 1.11, 1.35, 1.85, 2.29, 2.81, 3.44, 4.24, 5.3, 6.61, 8.2, 11, 14.7, 21.4, 26.3]
-      26.3, 21.4, 14.7, 11, 8.2, 6.61, 5.3, 4.24, 3.44, 2.81, 2.29, 1.85, 1.35, 1.11, 0.8, .57, .45, .35, .2, .1, .05]
-x = np.linspace(0,1, len(ir))
+ir = [15.97, 14.30, 12.49, 10.63, 10.07, 10.41, 10.29, 9.45, 7.32, 4.46, 3.11, 2.35, 1.72, 1.37, 1.12, 0.91, 0.74,
+        0.61, 0.52,  0.44,  0.38,  0.35,  0.32,  0.30, 0.29, 0.27, 0.27, 0.27, 0.26, 0.25, 0.24, 0.14, 0.23, 0.22]
+x = np.linspace(0,16, len(ir))
 
-# mymodel = np.poly1d(np.polyfit(x, ir, 4))
-# print(mymodel)
+# a,b,c,d,e = np.poly1d(np.polyfit(x, ir, 4))
+mymodel = np.poly1d(np.polyfit(x, ir, 15))
+print(type(mymodel))
+myline = np.linspace(0,16,100)
+best_fit = mymodel(myline)
 
-# myline = np.linspace(-1,0,100)
+# def test(x,a,b,c):
+#     return a*x**2 + b*x + c
+#
+# popt, _ = curve_fit(test,x, ir)
+# a,b,c = popt
+#
+# plt.scatter(x,ir)
+#
+# # define a sequence of inputs between the smallest and largest known inputs
+# x_line = np.arange(min(x), max(x), 1)
+# # calculate the output for the range
+# y_line = test(x_line, a, b, c)
+# # create a line plot for the mapping function
+# plt.plot(x_line, y_line, '--', color='red')
 
-plt.scatter(x, ir)
+plt.plot(x, ir)
+plt.plot(myline, best_fit, '--', color = 'red')
 plt.xlabel('Distance from the Center of Lit Surface (cm)')
 plt.ylabel('Irradiance (mW/cm^2)')
 plt.title('Distance vs Irradiance')
-plt.savefig("Distance_vs_Irradiance.png", bbox_inches='tight')
+# plt.savefig("Distance_vs_Irradiance.png", bbox_inches='tight')
 plt.show()
-
-
-
-
-#
-# r = np.linspace(-1,1,5)
-# theta = np.linspace(0,2*np.pi,5)
-#
-# r,theta = np.meshgrid(r,theta)
-#
-
-# x, y = np.mgrid[-10:10.05:0.5, -10:10.05:0.5]
-# r = np.sqrt(x**2 + y**2)
-# # for s in range(r.shape[0]):
-# #     r[s] = r[20]
-# z = 125.8*r**4 - 329.5*r**3 + 318.8*r**2 - 141.4*r + 26.59
-# print(r.shape)
-#
-# fig, ax = plt.subplots(1,1)
-#
-# im = ax.imshow(z)
-# fig.colorbar(im)
-# ax.yaxis.set_major_locator(plt.NullLocator()) # remove y axis ticks
-# ax.xaxis.set_major_locator(plt.NullLocator()) # remove x axis ticks
-# plt.show()
-
-# import numpy as np
-# import matplotlib.pyplot as plt
-#
-# theta = np.linspace(0, 2*np.pi, 100)
-#
-# r = np.sqrt(1.0)
-#
-# x1 = r*np.cos(theta)
-# x2 = r*np.sin(theta)
-#
-# fig, ax = plt.subplots(1)
-#
-# ax.plot(x1, x2)
-# ax.set_aspect(1)
