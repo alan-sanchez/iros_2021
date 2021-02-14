@@ -17,7 +17,7 @@ if __name__ == '__main__':
 	# Set up the convolution mask.  This one is a 10 pixel wide mask of constant value (1.0).  Note that
 	# this is different from the masks used in image processing in that the elements of the mask do not
 	# have to add up to 1.
-	window = 10
+	window = 11
 	square_mask = np.ones((window, window))
 
 	# This draws a round mask.
@@ -44,10 +44,15 @@ if __name__ == '__main__':
 	# Force it into 8 bit format and save as an image.
 	formatted = (accumulator * 255 / np.max(accumulator)).astype('uint8')
 	# Image.fromarray(formatted).save('output.png')
-
+	im = Image.fromarray(formatted)
+	im.show()
 	# Dump the masks
 	formatted = (round_mask * 255 / np.max(round_mask)).astype('uint8')
+	im = Image.fromarray(formatted)
+	im.show()
 	# Image.fromarray(formatted).save('round_mask.png')
 
 	formatted = (ramped_mask * 255 / np.max(ramped_mask)).astype('uint8')
+	im = Image.fromarray(formatted)
+	im.show()
 	# Image.fromarray(formatted).save('ramped_mask.png')
