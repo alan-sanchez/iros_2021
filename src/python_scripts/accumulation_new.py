@@ -4,35 +4,36 @@
 import numpy as np
 from scipy.signal import convolve2d
 from math import sqrt
+from best_fit import fit
 
 from PIL import Image
 
 
 if __name__ == '__main__':
 	# This is the array that adds up the radiation values.
-	rows = 20
-	columns = 40
+	rows = 25
+	columns = 115
 	accumulator = np.zeros((rows, columns))
 
-	# Set up the convolution mask.  This one is a 10 pixel wide mask of constant value (1.0).  Note that
+	model = fit(3, plotter = False)
+
+	# Set up the convolution mask.  This one is a 5 pixel wide mask of constant value (1.0).  Note that
 	# this is different from the masks used in image processing in that the elements of the mask do not
 	# have to add up to 1.
-	window = 11
-	square_mask = np.ones((window, window))
-
-	# This draws a round mask.
-	round_mask = np.zeros((window, window))
-	for r in range(window):
-		for c in range(window):
-			if (r - window / 2) ** 2 + (c - window / 2) ** 2 < (window / 2) ** 2:
-				pass
-				round_mask[r, c] = 1.0
-
+	window = 15
 	# Ramped
 	ramped_mask = np.zeros((window, window))
+	center_r = window/2#round(window/2.0)
+	center_c = window/2#round(window/2.0)
 	for r in range(window):
 		for c in range(window):
-			ramped_mask[r, c] = 1.0 / (((r - 5) ** 2 + (c - 5) ** 2) + 1.0)
+			radius_dist = sqrt( (r-center_r)**2 + (c-center_c)**2 )
+
+			if radius_dist > 4.5:
+				ramped_mask[r,c] = 0
+
+			else:
+				ramped_mask[r,c] = model(radius_dist)
 
 	# Swipe the window across the swath, at row 5.  This is a bit special-cased for this example.
 	for c in range(columns - window - 1):
@@ -46,11 +47,7 @@ if __name__ == '__main__':
 	# Image.fromarray(formatted).save('output.png')
 	im = Image.fromarray(formatted)
 	im.show()
-	# Dump the masks
-	formatted = (round_mask * 255 / np.max(round_mask)).astype('uint8')
-	im = Image.fromarray(formatted)
-	im.show()
-	# Image.fromarray(formatted).save('round_mask.png')
+
 
 	formatted = (ramped_mask * 255 / np.max(ramped_mask)).astype('uint8')
 	im = Image.fromarray(formatted)
