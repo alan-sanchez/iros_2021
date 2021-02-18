@@ -12,7 +12,7 @@ void setup(){
 
 void loop(){
   // Compute actual polling time difference
-  delta_t = millis() - last_time;
+  float delta_t = millis() - last_time;
 
   // Compute the diode current of the sensor with diode_current function
   float Di_0 = diode_current(analogRead(A0));
@@ -24,6 +24,8 @@ void loop(){
   UV_Dose_0 += Ir_0 * delta_t/1000.0;
 
   // Serial print the irradiance and uv dosage at sensor
+  Serial.print(delta_t);
+  Serial.print(",");
   Serial.print(Ir_0);
   Serial.print(", ");
   Serial.println(UV_Dose_0);
@@ -32,7 +34,7 @@ void loop(){
   last_time = millis();
 
   // Add delay
-  delay(500);
+  delay(1000);
 }
 
 
