@@ -15,7 +15,7 @@ void loop(){
   float delta_t = millis() - last_time;
 
   // Compute the diode current of the sensor with diode_current function
-  float Di_0 = diode_current(analogRead(A0));
+  float Di_0 = diode_current(analogRead(A6));
 
   // Compute Irradaince at sensor with mapfloat function
   float Ir_0 = mapfloat(Di_0, 0.0, 1.0, 0.0, 9.0); //Convert the voltage to a UV intensity level
@@ -39,7 +39,14 @@ void loop(){
 
 
 float diode_current(float A_in){
-  return 5.0 * A_in / 1023.0 / V_conversion;
+  float diode_current_val = 5.0 * A_in / 1023.0 / V_conversion;
+
+  if (diode_current_val > .03) {
+    return diode_current_val;
+  }
+  else {
+    return 0.0;
+  }
 }
 
 float mapfloat(float x, float in_min, float in_max, float out_min, float out_max){
