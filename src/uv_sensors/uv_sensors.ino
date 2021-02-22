@@ -55,21 +55,21 @@ void loop() {
   //  float Ir_15 = mapfloat(Di_15, 0.0, 1.0, 0.0, 9.0);
 
   // Update UV dosage at sensor
-  UV_Dose_0  += Ir_0  * delta_t / 1000.0;
-  UV_Dose_1  += Ir_1  * delta_t / 1000.0;
-  UV_Dose_2  += Ir_2  * delta_t / 1000.0;
-  UV_Dose_3  += Ir_3  * delta_t / 1000.0;
-  UV_Dose_4  += Ir_4  * delta_t / 1000.0;
-  UV_Dose_5  += Ir_5  * delta_t / 1000.0;
-  UV_Dose_6  += Ir_6  * delta_t / 1000.0;
-  UV_Dose_7  += Ir_7  * delta_t / 1000.0;
-  UV_Dose_8  += Ir_8  * delta_t / 1000.0;
-  UV_Dose_9  += Ir_9  * delta_t / 1000.0;
-  UV_Dose_10 += Ir_10 * delta_t / 1000.0;
-  UV_Dose_11 += Ir_11 * delta_t / 1000.0;
-  UV_Dose_12 += Ir_12 * delta_t / 1000.0;
-  UV_Dose_13 += Ir_13 * delta_t / 1000.0;
-  UV_Dose_14 += Ir_14 * delta_t / 1000.0;
+  UV_Dose_0  += 10 * Ir_0  * delta_t / 1000.0;
+  UV_Dose_1  += 10 * Ir_1  * delta_t / 1000.0;
+  UV_Dose_2  += 10 * Ir_2  * delta_t / 1000.0;
+  UV_Dose_3  += 10 * Ir_3  * delta_t / 1000.0;
+  UV_Dose_4  += 10 * Ir_4  * delta_t / 1000.0;
+  UV_Dose_5  += 10 * Ir_5  * delta_t / 1000.0;
+  UV_Dose_6  += 10 * Ir_6  * delta_t / 1000.0;
+  UV_Dose_7  += 10 * Ir_7  * delta_t / 1000.0;
+  UV_Dose_8  += 10 * Ir_8  * delta_t / 1000.0;
+  UV_Dose_9  += 10 * Ir_9  * delta_t / 1000.0;
+  UV_Dose_10 += 10 * Ir_10 * delta_t / 1000.0;
+  UV_Dose_11 += 10 * Ir_11 * delta_t / 1000.0;
+  UV_Dose_12 += 10 * Ir_12 * delta_t / 1000.0;
+  UV_Dose_13 += 10 * Ir_13 * delta_t / 1000.0;
+  UV_Dose_14 += 10 * Ir_14 * delta_t / 1000.0;
   //  UV_Dose_15 += Ir_15 * delta_t/1000.0;
 
   // Serial print the irradiance and uv dosage at sensor
