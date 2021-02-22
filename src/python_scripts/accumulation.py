@@ -20,6 +20,8 @@ class Accumulation:
 		self.model = fit(3, plotter = False)
 		self.req_dosage = 1
 
+		self.flag = 1
+
 	def UV_dosage_callback(self,msg):
 		self.req_dosage = msg.data
 		self.convolution_technique()
@@ -75,7 +77,7 @@ class Accumulation:
 				else:
 					ramped_mask[r,c] = self.model(radius_dist)
 
-		print(sum(ramped_mask[10,:]))
+		# print(sum(ramped_mask[10,:]))
 		irradiance = sum(ramped_mask[window/2, :])
 
 		## The diameter of the considered disinfecting surface is 20 cm. If the arm's max velocity is 11cm/s
@@ -93,7 +95,7 @@ class Accumulation:
 		else:
 			vel = ratio
 
-		# print(vel)
+		print(vel)
 
 		self.vel_regulator_pub.publish(vel)
 
@@ -106,13 +108,12 @@ class Accumulation:
 		# Image.fromarray(formatted).save('output.png')
 		# im = Image.fromarray(formatted)
 		# im.show()
-
-
+		#
 		# formatted = (ramped_mask * 255 / np.max(ramped_mask)).astype('uint8')
 		# im = Image.fromarray(formatted)
 		# im.show()
 		# Image.fromarray(formatted).save('ramped_mask.png')
-
+	
 
 
 if __name__ == '__main__':

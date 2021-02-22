@@ -31,13 +31,13 @@ def fit(order = 2, plotter = False):
         # Plot both original data and best fit. Only plotted data that went up to
         # 10 cm.
         plt.grid(linestyle='--')
-        plt.scatter(x, ir)
-        # plt.errorbar(x, ir, xerr = 0, yerr = 0, capsize = 3 )
-        plt.plot(x_line, best_fit, '--', color = 'red')
+        # plt.scatter(x, ir)
+        plt.plot(x_line, best_fit, '--', color = 'red', zorder=2)
+        plt.errorbar(x, ir, xerr = .5, yerr = .5, capsize = 3,  fmt = 'o',zorder=1 )
         plt.xlabel('Distance from the Center of Lit Surface (cm)')
         plt.ylabel('Irradiance (mW/cm^2)')
         plt.title('10W UV Flashlight held 30cm above UV meter')
-        plt.legend(['Best Fit', 'UV Meter Measurements'])
+        plt.legend(['Best Fit Curve', 'UV Meter Measurements'])
         # plt.savefig("Distance_vs_Irradiance.png", bbox_inches='tight')
         plt.show()
 
@@ -46,5 +46,5 @@ def fit(order = 2, plotter = False):
     return model
 
 if __name__ == '__main__':
-    model = fit(3, plotter = True)
-    print(model)
+    model = fit(15, plotter = True)
+    # print(model)

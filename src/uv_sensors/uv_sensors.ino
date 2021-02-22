@@ -70,7 +70,11 @@ void loop() {
   UV_Dose_12 += 10 * Ir_12 * delta_t / 1000.0;
   UV_Dose_13 += 10 * Ir_13 * delta_t / 1000.0;
   UV_Dose_14 += 10 * Ir_14 * delta_t / 1000.0;
+<<<<<<< HEAD
   //  UV_Dose_15 += Ir_15 * delta_t/1000.0;
+=======
+  //  UV_Dose_15 += 10 * Ir_15 * delta_t/1000.0;
+>>>>>>> 8234fcb64b806924d782c97f19bcdc71d5e95c95
 
   // Serial print the irradiance and uv dosage at sensor
   //  Serial.print(Ir_0);
@@ -115,7 +119,7 @@ void loop() {
 float diode_current(float A_in) {
   float diode_current_val = 5.0 * A_in / 1023.0 / V_conversion;
 
-  if (diode_current_val > .05) {
+  if (diode_current_val > .03) {
     return diode_current_val;
   }
   else {
