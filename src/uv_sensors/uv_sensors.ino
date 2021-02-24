@@ -54,7 +54,9 @@ void loop() {
   float Ir_14 = mapfloat(Di_14, 0.0, 1.0, 0.0, 9.0);
   //  float Ir_15 = mapfloat(Di_15, 0.0, 1.0, 0.0, 9.0);
 
-  // Update UV dosage at sensor
+  // Update UV dosage at sensor. 
+  // Multiply by 10 to convert to mW/cm^2 to W/m^2 and
+  // divide by 1000 to convert ms to s
   UV_Dose_0  += 10 * Ir_0  * delta_t / 1000.0;
   UV_Dose_1  += 10 * Ir_1  * delta_t / 1000.0;
   UV_Dose_2  += 10 * Ir_2  * delta_t / 1000.0;
@@ -70,11 +72,7 @@ void loop() {
   UV_Dose_12 += 10 * Ir_12 * delta_t / 1000.0;
   UV_Dose_13 += 10 * Ir_13 * delta_t / 1000.0;
   UV_Dose_14 += 10 * Ir_14 * delta_t / 1000.0;
-<<<<<<< HEAD
-  //  UV_Dose_15 += Ir_15 * delta_t/1000.0;
-=======
   //  UV_Dose_15 += 10 * Ir_15 * delta_t/1000.0;
->>>>>>> 8234fcb64b806924d782c97f19bcdc71d5e95c95
 
   // Serial print the irradiance and uv dosage at sensor
   //  Serial.print(Ir_0);
