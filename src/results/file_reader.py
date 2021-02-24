@@ -16,5 +16,6 @@ Sensors = ['S0', 'S1', 'S2', 'S3', 'S4',
             ]
 
 plt.bar(Sensors, test_list, alpha =0.5, yerr = 10, ecolor='black', capsize=2)
+
 plt.show()
 print(test_list)
