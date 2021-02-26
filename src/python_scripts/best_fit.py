@@ -32,13 +32,14 @@ def fit(order = 2, plotter = False):
         # 10 cm.
         plt.grid(linestyle='--')
         # plt.scatter(x, ir)
-        plt.plot(x_line, best_fit, '--', color = 'red', zorder=2)
-        plt.errorbar(x, ir, xerr = .5, yerr = .4, capsize = 3,  fmt = 'o',zorder=1 )
+        plt.plot(x_line[0:21], best_fit[0:21], '--', color = 'red', zorder=2)
+        plt.errorbar(x[0:21], ir[0:21], xerr = .5, yerr = .4, capsize = 3,  fmt = 'o',zorder=1 )
         plt.fill_between(x[0:11], 0 ,best_fit[0:11], facecolor='green', alpha=0.3, zorder=3)
         plt.xlabel('Distance from the Center of Lit Surface (cm)')
         plt.ylabel('Irradiance (mW/cm^2)')
         plt.title('10W UV Flashlight at 30cm above UV Meter')
         plt.legend(['Best Fit Curve', 'Considered UV Irradation','UV Meter Measurements'])
+        # plt.subplots_adjust(left = 0.10, bottom = 0.09, right = 0.99, top =0.94)
         plt.savefig("Distance_vs_Irradiance.png", bbox_inches='tight')
         plt.show()
 
