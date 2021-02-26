@@ -6,7 +6,7 @@ with open('ebola_sudan.csv', 'r') as file:
     reader = csv.reader(file)
     for row in reader:
         dosage = row
-        sensor_7.append(float(dosage[9]))
+        sensor_7.append(float(dosage[7]))
 
 test_list=[]
 for i in range(0, len(dosage)):
@@ -14,7 +14,7 @@ for i in range(0, len(dosage)):
 
 
 res = [sensor_7[i + 1] - sensor_7[i] for i in range(len(sensor_7)-1)]
-s7 =  res[103:138]#[i for i in res if i != 0]
+s7 =  res[85:122]#[103:138]#[i for i in res if i != 0]
 time = []
 for i in range(len(s7)):
     time.append(i*.015)
@@ -26,22 +26,22 @@ Sensors = ['S0', 'S1', 'S2', 'S3', 'S4',
            'S10', 'S11', 'S12', 'S13', 'S14'
             ]
 # plt.figure(0)
-# plt.bar(Sensors, test_list, alpha =0.5, yerr = 5, ecolor='black', capsize=2)
-# plt.axhline(y=27, color = 'b', linestyle='--')
-# plt.legend(['Required UV Dose for D90'])
-# plt.ylabel('UV Dosage (J/m^2)')
-# plt.xlabel('Array of UV sensors')
-# plt.title('Ebola Sudan Virus, k = 0.0867 m^2/J at D90')
-# plt.savefig("ebola_sudan_d90.png", bbox_inches='tight')
+plt.bar(Sensors, test_list, alpha =0.5, yerr = 5, ecolor='black', capsize=2)
+plt.axhline(y=27, color = 'b', linestyle='--')
+plt.legend(['Required UV Dose for D90'])
+plt.ylabel('UV Dosage (J/m^2)')
+plt.xlabel('Array of UV sensors')
+plt.title('Ebola Sudan Virus, k = 0.0867 m^2/J at D90')
+plt.savefig("ebola_sudan_d90.png", bbox_inches='tight')
 
 
-plt.figure(1)
-plt.grid(linestyle='--')
-plt.xlabel('Exposure Time (sec)')
-plt.ylabel('Irradiance (W/m^2)')
-plt.errorbar(time, res[103:138], yerr = .1, capsize = 2, ecolor='black')
-plt.title('Time vs Measured Irradiance at Sensor 7')
-plt.savefig("ebola_sudan_s7.png", bbox_inches='tight')
+# plt.figure(1)
+# plt.grid(linestyle='--')
+# plt.xlabel('Time (sec)')
+# plt.ylabel('Irradiance (W/m^2)')
+# plt.errorbar(time, res[85:122], yerr = .1, capsize = 2, ecolor='black')
+# plt.title('Time vs Measured Irradiance at Sensor 7')
+# plt.savefig("ebola_sudan_s7.png", bbox_inches='tight')
 plt.show()
 
 

@@ -26,7 +26,6 @@ Sensors = ['S0', 'S1', 'S2', 'S3', 'S4',
            'S5', 'S6', 'S7', 'S8', 'S9',
            'S10', 'S11', 'S12', 'S13', 'S14'
             ]
-print dosages
 
 X = np.arange(15)
 # plt.add_axes([0,0,1,1])
@@ -46,9 +45,11 @@ plt.axhline(y=133, color = 'g', linestyle='--')
 
 plt.legend(['Required UV Dose at D90', 'Required UV Dose at D99.9', 'Required UV Dose at D99.999'])
 plt.title('Measured UV Dosage for Ebola Sudan at D90, D99.9, and D99.999')
-# plt.savefig("three_different_microbes.png", bbox_inches='tight')
+plt.subplots_adjust(left = 0.09, bottom = 0.10, right = 0.99, top =0.93)
 
 plt.xticks([r + 0.25 for r in range(len(Sensors))], Sensors)
 plt.ylabel('UV Dosage (J/m^2)')
 plt.xlabel('Array of UV sensors')
+plt.savefig("ebola_diff_dvalues.png", bbox_inches='tight')
+
 plt.show()
