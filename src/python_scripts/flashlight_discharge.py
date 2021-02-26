@@ -3,9 +3,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # np array of 10 seconds for 3 minutes.
-x = np.linspace(0,240,25)
+# x = np.linspace(0,240,25)
 # Append larger times. Also convert to mins
-x = np.append(x, [[300, 600, 900, 1200, 1500, 1800]])/60
+# x = np.append(x, [[300, 600, 900, 1200, 1500, 1800]])/60
+x = [0, 5, 10, 15, 20, 25, 30]
+
 
 # # Irradiance of flashlight with battery connected to charger. Trial #1
 # ir_battery_with_charger_1 = [21.32, 20.67, 20.44, 20.35, 20.22, 20.11, 20.01, 19.93, 19.85, 19.76, 19.70, 19.63,
@@ -28,6 +30,8 @@ ir_charger = [17.80, 17.79, 17.79, 17.76, 17.76, 17.75, 17.73, 17.67, 17.64, 17.
               16.89, 16.83, 16.78, 16.52, 15.34, 14.67, 14.26, 13.96, 13.80]#, 13.74,
               # 13.71, 13.68, 13.61]
 
+ir_charger_smaller = [17.80,  16.52, 15.34, 14.67, 14.26, 13.96, 13.80 ]
+
 #x_new = np.append(x, [[35, 40, 45, 50]])
 
 # Plot all measured data
@@ -42,8 +46,8 @@ plt.grid(linestyle='--')
 plt.xlabel('Exposure Time (min)')
 plt.ylabel('Irradiance (mW/cm^2)')
 plt.title('UV Flashlight Discharge: Time vs Irradiance')
-plt.errorbar(x, ir_charger, linewidth=2.5 ,yerr = .1, capsize = 3, ecolor='black',zorder=1 )
+plt.errorbar(x, ir_charger_smaller, linewidth=2.5 ,yerr = .1, capsize = 3, ecolor='black',zorder=1 )
 
 # plt.legend(['Battery & Charger #1', 'Battery & Charger #2', 'Battery Only', 'Charger Only'])
-plt.savefig('Flashlight Discharge', bbox_inches='tight')
+plt.savefig('flashlight_discharge.png', bbox_inches='tight')
 plt.show()
