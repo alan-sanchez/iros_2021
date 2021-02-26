@@ -38,10 +38,12 @@ plt.axhline(y=30, color = 'r', linestyle='--')
 plt.axhline(y=34, color = 'g', linestyle='--')
 
 plt.legend(['Required UV Dose for Ebola Sudan at D90', 'Required UV Dose for Staph. Aureus at D90', 'Required UV Dose for E.coli at D90'])
-plt.title('Measured UV Dosage for Three Different Microbes.')
-plt.savefig("three_different_microbes.png", bbox_inches='tight')
+plt.title('Measured UV Dosage for Three Different Pathogens.')
+plt.subplots_adjust(left = 0.09, bottom = 0.10, right = 0.99, top =0.93)
 
 plt.xticks([r + 0.25 for r in range(len(Sensors))], Sensors)
 plt.ylabel('UV Dosage (J/m^2)')
 plt.xlabel('Array of UV sensors')
+plt.savefig("three_different_virus.png", bbox_inches='tight')
+
 plt.show()
