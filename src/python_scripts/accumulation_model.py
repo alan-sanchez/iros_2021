@@ -2,6 +2,8 @@
 
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
+# plt.rcParams.update({'font.size': 12})
+
 import numpy as np
 from scipy.signal import convolve2d
 from math import sqrt
@@ -52,12 +54,14 @@ if __name__ == '__main__':
 	for r in range(rows):
 		for c in range(columns):
 			if accumulator[r,c] > 26.5:
-				disinfected[r,c] = 1
+				disinfected[r,c] = accumulator[r,c] # or 1
 
 			else:
 				disinfected[r,c] = 0
 
-	# c = plt.Circle((10,10), 5, color='r', fill=False, label='Considered Size of Mask')
+	print(np.amax(disinfected))
+	# print(max(disinfected))
+	# c = plt.Circle((10,10), 5, color='r',linewidth=2, fill=False, label='Considered Size of Kernel Mask')
 	# ticks = ['-10','-9','-8','-7','-6','-5','-4','-3','-2','-1','0','1','2','3','4','5','6','7','8','9','10']
 	# fig, ax = plt.subplots(1,1)
 	# im = ax.imshow(ramped_mask)
@@ -67,40 +71,30 @@ if __name__ == '__main__':
 	# ax.set_xticklabels(labels = ticks)
 	# ax.set_yticks((0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20))
 	# ax.set_yticklabels(labels = ticks)
-	# ax.set_xlabel('Distance from the Center of UV Exposed Area (cm)')
-	# ax.set_ylabel('Distance from the Center of UV Exposed Area (cm)')
-	# ax.set_title(' Mask of UV Light Source')
-	# clb.set_label('UV Irradiance (mW/cm^2)',labelpad=15)
+	# ax.set_xlabel('Distance from the Center of UV Exposed Area ($cm$)',fontsize=12)
+	# ax.set_ylabel('Distance from the Center of UV Exposed Area ($cm$)',fontsize=12)
+	# ax.set_title(' Mask of UV Light Source',fontsize=18)
+	# clb.set_label('UV Irradiance $(mW/cm^2)$',labelpad=15,fontsize=16)
 	# ax.legend()
 	# plt.savefig("ramped_mask_2.png", bbox_inches='tight')
 
 	ticks = [0,10,20,30]
-	rect = patches.Rectangle((13.5,14.5), 100,1, linewidth=1, edgecolor='r', facecolor='none',label='Disinfected Region')
+	rect = patches.Rectangle((13.5,14.5), 100,1, linewidth=2, edgecolor='r', facecolor='none',label='Disinfected Region')
 	fig, ax1 = plt.subplots(1,1)
+	fig.set_size_inches(10.25, 6.25)
+
 	im1 = ax1.imshow(accumulator)
 	clb1 = fig.colorbar(im1)
 	ax1.add_patch(rect)
 	ax1.set_yticks(ticks)
 	ax1.set_yticklabels(ticks[::-1])
-	ax1.set_xlabel('Length of Coverage (cm)')
-	ax1.set_ylabel('Height of Coverage (cm)')
-	ax1.set_title('Model of Spanned Mask')
-	ax1.legend()
-	clb1.set_label('UV Irradiance (mW/cm^2)',labelpad=15)
-
-
-	# im2 = ax2.imshow(disinfected)
-	# clb2 = fig.colorbar(im2)
-	# ax2.add_patch(rect)
-	# ax2.set_yticks(ticks)
-	# ax2.set_yticklabels(ticks[::-1])
-	# ax2.set_xlabel('Length of Coverage (cm)')
-	# ax2.set_ylabel('Height of Coverage (cm)')
-	# ax2.set_title('Model of Spanned Mask')
-	# ax2.legend()
-	# clb2.set_label('UV Irradiance (mW/cm^2)',labelpad=15)
-
-	plt.subplots_adjust(left = 0.08, bottom = 0.15, right = 1, top =0.45)
-
+	ax1.set_xlabel('Length ($cm$)', fontsize=30)
+	ax1.set_ylabel('Height ($cm$)',  fontsize=30)
+	ax1.set_title('Ebola Sudan, $k$ = 0.0867 $m^2/J$ at $D_{90}$ ',y=1.3 ,fontsize=30)
+	ax1.legend(fontsize=15)
+	clb1.set_label('UV Irradiance ($mW/cm^2$)',labelpad=15, fontsize=24)
+	plt.subplots_adjust(left = 0.12, bottom = 0.22, right = 1, top =0.80)
 	plt.savefig("1D_coverage_model.png", bbox_inches='tight')
+
+
 	plt.show()
