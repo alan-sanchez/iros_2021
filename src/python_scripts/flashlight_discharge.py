@@ -43,9 +43,9 @@ ir_charger_smaller = [17.80,  16.52, 15.34, 14.67, 14.26, 13.96, 13.80 ]
 
 plt.grid(linestyle='--')
 
-plt.xlabel('Exposure Time (min)')
-plt.ylabel('Irradiance (mW/cm^2)')
-plt.title('UV Flashlight Discharge: Time vs Irradiance')
+plt.xlabel('Exposure Time ($min$)',fontsize=14)
+plt.ylabel('Irradiance ($mW/cm^2$)',fontsize=14)
+plt.title('UV Flashlight Discharge',fontsize=16)
 plt.errorbar(x, ir_charger_smaller, linewidth=2.5 ,yerr = .1, capsize = 3, ecolor='black',zorder=1 )
 
 # plt.legend(['Battery & Charger #1', 'Battery & Charger #2', 'Battery Only', 'Charger Only'])
