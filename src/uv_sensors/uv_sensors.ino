@@ -116,7 +116,7 @@ void loop() {
 
 float diode_current(float A_in) {
   float diode_current_val = 5.0 * A_in / 1023.0 / V_conversion;
-
+  // keep arduino from accumulating ambient UV irradiance/noise
   if (diode_current_val > .03) {
     return diode_current_val;
   }
